@@ -8,38 +8,38 @@ It was built by Dominik Wrona and Nicholas Reimer.
 ## User Stories
 
 Authenticated User:
--As a authenticated user I can create a new map and add, edit or remove map points, because I have been verified by the site.
+- As a authenticated user I can create a new map and add, edit or remove map points, because I have been verified by the site.
 
--As a authenticated user I can edit an existing map by adding, editing or removing points, because i have been verified by the site.
+- As a authenticated user I can edit an existing map by adding, editing or removing points, because i have been verified by the site.
 
--As a authenticated user my profile page shows my favourite maps AND maps I have contributed to , because i have been verified by the site.
+- As a authenticated user my profile page shows my favourite maps AND maps I have contributed to , because i have been verified by the site.
 
 Regular User:
--I can view a list of all maps because I have a profile on the site
+- I can view a list of all maps because I have a profile on the site
 
--I can favorite maps from the map list because I have a profile on the site
+- I can favorite maps from the map list because I have a profile on the site
 
--I have a profile page that shows my favourite maps, 
-
--I can NOT edit or view other maps because I am NOT an authenticated user
+- I have a profile page that shows my favourite maps, 
+ 
+- I can NOT edit or view other maps because I am NOT an authenticated user
 
 ## Page Features 
 
--Regular users can see a list of the available maps;
+- Regular users can see a list of the available maps;
 
--Regular users can view a map;
+- Regular users can view a map;
 
--A map can contain many points;
+- A map can contain many points;
 
--Each point can have: a title, description, and image;
+- Each point can have: a title, description, and image;
 
--Authenticated user can create maps;
+- Authenticated user can create maps;
 
--Authenticated user can modify maps (add, edit, remove points);
+- Authenticated user can modify maps (add, edit, remove points);
 
--Authenticated user can favourite a map;
+- Authenticated user can favourite a map;
 
--Authenticated user can see their indicated favourite maps and maps they've contributed to
+- Authenticated user can see their indicated favourite maps and maps they've contributed to
 
 ## Warnings & Tips
 
