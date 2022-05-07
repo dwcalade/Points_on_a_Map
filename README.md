@@ -1,31 +1,33 @@
-LHL Node Skeleton
+Points On A Map
 =========
 
-## Project Setup
+Points on a Map is a web app that uses Leaflet; this allows users to create and edit maps of their interests/places to refer!
 
-The following steps are only for _one_ of the group members to perform.
+It was built by Dominik Wrona and Nicholas Reimer.
 
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
+## User Stories
 
+Authenticated User:
+-As a authenticated user I can create a new map and add, edit or remove map points, because I have been verified by the site.
+-As a authenticated user I can edit an existing map by adding, editing or removing points, because i have been verified by the site.
+-As a authenticated user my profile page shows my favourite maps AND maps I have contributed to , because i have been verified by the site.
 
-## Getting Started
+Regular User:
+-I can view a list of all maps because I have a profile on the site
+-I can favorite maps from the map list because I have a profile on the site
+-I have a profile page that shows my favourite maps, 
+-I can NOT edit or view other maps because I am NOT an authenticated user
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information 
-  - username: `labber` 
-  - password: `labber` 
-  - database: `midterm`
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Reset database: `npm run db:reset`
-  - Check the db folder to see what gets created and seeded in the SDB
-7. Run the server: `npm run local`
-  - Note: nodemon is used, so you should not have to restart your server
-8. Visit `http://localhost:8080/`
+## Page Features 
+
+-Regular users can see a list of the available maps;
+-Regular users can view a map;
+-A map can contain many points;
+-Each point can have: a title, description, and image;
+-Authenticated user can create maps;
+-Authenticated user can modify maps (add, edit, remove points);
+-Authenticated user can favourite a map;
+-Authenticated user can see their indicated favourite maps and maps they've contributed to
 
 ## Warnings & Tips
 
@@ -41,3 +43,11 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+
+## Routes
+
+
+## ERD
+
+## Finised App Screenshots
