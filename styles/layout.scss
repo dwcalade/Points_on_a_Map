@@ -6,3 +6,13 @@ $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
 
+main {
+  #mapid {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    height: 85%;
+    width: 75%;
+    z-index: 1;
+  }
+}
