@@ -1,3 +1,5 @@
+//the backend server
+
 // load .env data into process.env
 require("dotenv").config();
 
