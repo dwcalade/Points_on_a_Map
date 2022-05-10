@@ -124,3 +124,13 @@ const mapRoutes = express.Router();
 $(() => {});
 
 // establish the database as per the erd before attempting to pull anything from it
+
+newMarkerGroup = new L.LayerGroup();
+map.on('click', addMarker);
+
+function addMarker(click){
+  return newMarker = new L.marker(click.latlng, {draggable: 'true'})
+    .addTo(map)
+    .bindPopup(popupContent)
+    .openPopup();
+}
