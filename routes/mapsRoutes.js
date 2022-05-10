@@ -9,7 +9,7 @@ module.exports = (db) => {
 
   //GET: /maps - home page, the starting point for a new guest
 
-  router.get("/maps", (req, res) => {
+  router.get("/", (req, res) => {
     //query the maps table in order to populate the map list box
     db.query(`SELECT * FROM users;`)
       .then((data) => {
