@@ -4,13 +4,12 @@ const express = require("express");
 const router = express.Router();
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
-  // MAP RELATED SERVER ROUTES: (see google doc)
+  // MAP POINTS RELATED SERVER ROUTES: (see google doc)
   //-----------------------------
 
-  //GET: /maps - home page, the starting point for a new guest
+  //CHANGE ALL BELOW FOLLOW TABLE DOC
 
   router.get("/", (req, res) => {
-    //query the maps table in order to populate the map list box
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
