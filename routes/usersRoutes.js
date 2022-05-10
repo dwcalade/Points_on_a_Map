@@ -27,14 +27,18 @@ module.exports = (db) => {
       });
   });
 
-
+  //Login Route
   router.post("/login", (req, res) => {
-      req.session.userID = user.userID;
-      res.json(dbRes[0])
-      res.redirect('/maps');
+    // Get username and password from req
+    //Query database for matching username and password
+    db.query()
+      // req.session.userID = user.userID;
+      console.log (req.body)
+      // res.json(dbRes[0])
+      // res.redirect('/maps');
   });
 
-
+  //Logout Route
   router.post('/logout', (req, res) => {
   req.session = null
   res.clearCookie('session');
