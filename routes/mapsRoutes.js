@@ -5,36 +5,62 @@ const router = express.Router();
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
   // MAP RELATED SERVER ROUTES: (see google doc)
-  //-----------------------------
 
-  //GET: /maps - home page, the starting point for a new guest
+  //-------------------------------------------------------------------------------
+  //GET: /maps - the place a client is sent when they first arrive to the site,
 
   router.get("/", (req, res) => {
-    //query the maps table in order to populate the map list box
-    db.query(`SELECT * FROM users;`)
+    //query the maps table fromt he db in order to populate the data needed for the map list box
+    db.query(`SELECT * FROM maps;`)
       .then((data) => {
-        const users = data.rows;
-        res.json({ users });
+        const maps = data.rows;
+        res.json({ maps });
+        //this wil change to a res.render that will populate the future ejs template with the correct querry collected info
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
 
-  router.get("/test2", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+  //-------------------------------------------------------------------------------
+  //GET: /maps /:map_id - guest or user clicks a map in the map list box they get redirected to that specific map
+
+  router.get("/:map_id", (req, res) => {
+    db.query(`SELECT * FROM maps WHERE id = 1;`)
 
       .then((data) => {
-        const users = data.rows;
-        res.json({ users });
+        const map = data.rows;
+        res.json({ map });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
 
+  //-------------------------------------------------------------------------------
+  //POST: /maps /create
+  // -user clicks the create a new map and a form will pop up asking for a map name and when the user submits the form
+  // it will create a new map_id for the database
+
+  router.post("/create", (req, res) => {
+    // when the ejs form is built the value inputed by the client will be interpolated into the INSERT below
+    console.log("before the dbQuerry");
+    db.query(
+      `INSERT INTO maps(name, latitude, longitude)
+       VALUES ('mapsRoute.js TEST', 49.69695, -483.155365);`
+    )
+      // -the .then runs when the above DB insert is successfull and redirects the client to the specific
+      //  map they were just on
+      .then((data) => {
+        return res.redirect("map/1");
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  //-------------------------------------------------------------------------------
   //connects this file with server.js
   return router;
 };
-
-//-------------------------------------------------------------------------------
