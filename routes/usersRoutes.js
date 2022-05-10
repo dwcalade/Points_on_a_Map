@@ -9,6 +9,8 @@
 // SERVER SETUP:
 const express = require("express");
 const router = express.Router();
+const cookieSession = require('cookie-session');
+app.use(cookieSession({name: 'session', keys: [] }));
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
   // USER RELATED SERVER ROUTES: (see google doc)
@@ -29,13 +31,8 @@ module.exports = (db) => {
 
   //Login Route
   router.post("/login", (req, res) => {
-    // Get username and password from req
-    //Query database for matching username and password
-    db.query()
-      // req.session.userID = user.userID;
-      console.log (req.body)
-      // res.json(dbRes[0])
-      // res.redirect('/maps');
+      req.session.userID = user.userID;
+      res.redirect('/maps');
   });
 
   //Logout Route
