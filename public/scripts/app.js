@@ -53,12 +53,19 @@ $(() => {
   $logout = $('#logout');
   $register = $('#register');
   $welcome = $('#welcome-message');
+  $registerForm = $('.register_form');
+  $loginForm = $('.login_form');
+
   $login.click(() => {
-    $login.hide();
-    $register.hide();
-    $logout.show();
-    $welcome.show();
+    $loginForm.toggle();
+    $registerForm.hide();
   });
+
+  $register.click(() => {
+    $loginForm.hide();
+    $registerForm.toggle();
+  });
+
   $logout.click(() => {
     $login.show();
     $register.show();
