@@ -3,3 +3,15 @@ $color2: rgb(248, 246, 207);
 $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
+
+.marker-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  input {
+    margin-bottom: 1em;
+  }
+  .submit {
+    margin-top: 1em;
+  }
+}

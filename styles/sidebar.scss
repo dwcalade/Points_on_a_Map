@@ -1,0 +1,62 @@
+$color1: rgb(10, 43, 151);
+$color2: rgb(248, 246, 207);
+$color3: rgb(42, 169, 152);
+$color4: rgb(46, 23, 101);
+$color5: rgb(134, 184, 72);
+
+body {
+  aside {
+    .aside-content {
+      background-color: $color3;
+      box-shadow: 0.1em 0 0 0 $color4;
+      border-top: solid 0.1em $color4;
+      border-right: 0.1em $color4;
+    }
+    .aside-content::-webkit-scrollbar {
+      color: $color3;
+    }
+    .aside-content::-webkit-scrollbar-thumb {
+      color: $color1;
+    }
+    .turn-red {
+      background-color: $color1;
+    }
+    .turn-green {
+      background-color: $color3;
+    }
+    .turn-yellow {
+      background-color: $color2;
+    }
+  }
+  div {
+    ul {
+      li {
+        list-style-type:none;
+        flex-grow: 1;
+        border-top-right-radius: 25%;
+        line-height: 5em;
+        padding: 1em;
+        border-bottom: solid 0.1em $color4;
+      }
+      #all-maps {
+        border-top: solid 0.1em $color4;
+        background-color: $color3;
+        box-shadow: 0.1em 0 0 0 $color4;
+        z-index: 3;
+      }
+      #favourites {
+        background-color: $color1;
+        box-shadow: 0.1em 0 0 0 $color4;
+        z-index: 2;
+      }
+      #contributions {
+        background-color: $color2;
+        box-shadow: 0.1em 0 0 0 $color4;
+        z-index: 1;
+      }
+      .left-border {
+        border-left: solid 0.1em $color4;
+      }
+    }
+  }
+}

@@ -3,3 +3,49 @@ $color2: rgb(248, 246, 207);
 $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
+$shadow: 0.2em 0.2em 0 0 $color1;
+
+body {
+  nav {
+    background-color: $color1;
+    h1 {
+      color: $color3;
+      font-size: 3em;
+      padding: 0 1.5em;
+      text-shadow: 2px 2px $color4;
+    }
+    h1:hover {
+      color: $color4;
+      text-shadow: 2px 2px $color3;
+    }
+    #welcome-message {
+      display: none;
+      color: $color5;
+      font-size: 1.75em;
+    }
+    span {
+      align-self: center;
+      margin-left: auto;
+      padding: 2px;
+      button {
+        z-index: 10;
+        margin-right: 2em;
+        background-color: $color2;
+        color: $color4;
+        box-shadow: $shadow;
+      }
+      .btn-light:hover {
+        background-color: $color4;
+        color: $color2;
+        box-shadow: $shadow;
+      }
+      #logout {
+        display: none;
+      }
+    }
+    .form {
+      background-color: $color1;
+      box-shadow: $shadow;
+    }
+  }
+}

@@ -3,3 +3,35 @@ $color2: rgb(248, 246, 207);
 $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
+$shadow: 0.2em 0.2em 0 0 $color1;
+
+body {
+  #new-map_form {
+    background-color: $color1;
+    color: $color5;
+    font-size: 1.2em;
+    box-shadow: $shadow;
+  }
+  div {
+    form {
+      color: $color4;
+      .btn {
+        z-index: 10;
+        background-color: $color2;
+        color: $color4;
+        box-shadow: $shadow;
+      }
+    }
+  }
+  footer{
+    #new-map_button {
+      background-color: $color1;
+      color: $color5;
+      box-shadow: $shadow;
+    }
+    #new-map_button:hover {
+      color: $color1;
+      background-color: $color3;
+    }
+  }
+}

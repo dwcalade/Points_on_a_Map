@@ -6,13 +6,107 @@ $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
 
-main {
-  #mapid {
+
+body {
+  nav {
     position: absolute;
-    top: 15%;
-    left: 25%;
-    height: 85%;
-    width: 75%;
-    z-index: 1;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    z-index: 2;
+  }
+  main {
+    #mapid {
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      height: 85%;
+      width: 75%;
+      z-index: 1;
+    }
+  }
+  aside {
+    overflow: hidden;
+    .aside-content {
+      position: absolute;
+      top: 15%;
+      height: 100%;
+      width: 25%;
+      z-index: 4;
+      overflow-y: scroll;
+    }
+    div {
+      img {
+        max-width: 250px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+      }
+      .map-list-item {
+        border: 1px solid black;
+        margin: 1em;
+        padding: 1em;
+      }
+    }
+    .favourites-aside {
+      display: none;
+    }
+    .contributions-aside {
+      display: none;
+    }
+    .sidebar-nav {
+      ul {
+        top: 15%;
+        left: 22%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 15em;
+        z-index: 10;
+        flex-grow: 1;
+        li {
+          list-style-type:none;
+          flex-grow: 1;
+          line-height: 5em;
+          padding: 1em;
+        }
+        #all-maps {
+          z-index: 3;
+        }
+        #favourites {
+          z-index: 2;
+        }
+        #contributions {
+          z-index: 1;
+        }
+      }
+    }
+  }
+  #new-map_form {
+    position: fixed;
+    text-align: center;
+    display:none;
+    right: 2%;
+    bottom: 20%;
+    z-index: 10;
+    padding: 2em;
+  }
+  .create-icons {
+    z-index: 10;
+    position: fixed;
+    right: 2%;
+    display: inline-block;
+    bottom: 5%
+  }
+  footer {
+    #new-map_button {
+     border-radius: 50%;
+     width: 3.5em;
+     height: 3.5em;
+     margin: 1em;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+    }
   }
 }
