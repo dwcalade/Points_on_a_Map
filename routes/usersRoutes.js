@@ -27,6 +27,19 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/login", (req, res) => {
+      req.session.userID = user.userID;
+      res.json(dbRes[0])
+      res.redirect('/maps');
+  });
+
+
+  router.post('/logout', (req, res) => {
+  req.session = null
+  res.clearCookie('session');
+  res.redirect('/maps');
+  });
+
   //the return of router connects this file with server.js
   return router;
 };
