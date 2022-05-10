@@ -18,6 +18,16 @@ $(() => {
   const $favouritesAside = $('.favourites-aside');
   const $allMapsAside = $('.all-maps-aside');
   const $contributionsAside = $('.contributions-aside');
+  const $navigateDown = $('.navigate-down');
+  const $navigateUp = $('.navigate-up');
+
+  $navigateUp.click(() => {
+    $("html, body").animate({ scrollTop: "0" }, 1000);
+  });
+
+  $navigateDown.click(() => {
+    $("html, body").animate({ scrollTop: "9999" }, 1000);
+  })
 
 // add leaflet here
   // const map = L.map('mapid').setView([,], 12);
@@ -75,6 +85,11 @@ $(() => {
   $mapButton.click(() => {
     $mapForm.toggle();
   });
+  $newMapButton.click(() => {
+    $mapForm.toggle();
+    $mapNameField.focus();
+  });
+
   $favourites.click(() => {
     $asidecontent.addClass('turn-red')
       .removeClass('turn-yellow')
