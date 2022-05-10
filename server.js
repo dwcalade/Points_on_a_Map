@@ -1,3 +1,4 @@
+
 //the backend server
 
 // load .env data into process.env
@@ -53,8 +54,10 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/usersRoutes");
+//Error here due to mapRoutes being declared twice
 const mapsRoutes = require("./routes/mapsRoutes");
 const mapspointsRoutes = require("./routes/mappointsRoutes");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
