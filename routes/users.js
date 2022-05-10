@@ -19,7 +19,7 @@ module.exports = (db) => {
 
   // Use POSTMAN (or cur)(since we cant post anything without a front end)
   // to input a new user into my database. (check database to confirm its there)
-  router.post("/test", (req, res) => {
+  router.post("/test1", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
@@ -31,9 +31,10 @@ module.exports = (db) => {
   });
 
   //---------------------------------------
-  // GET: select all the users and return those values to the html
-  router.get("/test", (req, res) => {
+  // GET: select all the users and return those values as new div element onto the html (similiar to how new tweets worked in tweeter)
+  router.get("/test2", (req, res) => {
     db.query(`SELECT * FROM users;`)
+
       .then((data) => {
         const users = data.rows;
         res.json({ users });
