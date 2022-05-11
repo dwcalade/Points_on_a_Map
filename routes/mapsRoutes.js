@@ -23,10 +23,11 @@ module.exports = (db) => {
   });
 
   //-------------------------------------------------------------------------------
-  //GET: /maps /:map_id - guest or user clicks a map in the map list box and are redirected to that map
+  //GET: /maps /:map_id - guest or user clicks a map in the map list box and is redirected to that map
 
   router.get("/:map_id", (req, res) => {
-    db.query(`SELECT * FROM maps WHERE id = 1;`)
+    const mapID = req.params.map_id;
+    db.query(`SELECT * FROM maps WHERE id = ${mapID};`)
 
       .then((data) => {
         const map = data.rows;
@@ -48,19 +49,20 @@ module.exports = (db) => {
   router.post("/create", (req, res) => {
     // when the ejs form is built the value inputed by the user will be interpolated into the INSERT below
 
-    //QUESTION: what is difference between params and body?
-    const newMapName = req.params.name;
+    const newMapName = req.body.name;
     const mapLatitude = req.body.mapLat;
     const mapLongitude = req.body.mapLong;
 
     db.query(
       `INSERT INTO maps(name, latitude, longitude)
-       VALUES ('${newMapName}', ${mapLatitude}, ${mapLongitude});`
+       VALUES ('${newMapName}', ${mapLatitude}, ${mapLongitude})
+       RETURNING *;`
     )
 
       // .then runs when the above DB insert is successfull, then user is redirected to the map they created
       .then((data) => {
-        return res.redirect("map/1");
+        const mapID = data.rows[0].id;
+        return res.redirect(`/maps/${mapID}`);
       })
       .catch((err) => {
         console.log("error: ", err);
@@ -68,7 +70,16 @@ module.exports = (db) => {
       });
   });
 
-  //-------------------------------------------------------------------------------
+  // CURL TEST:
+  //  curl --location --request POST 'http://localhost:8080/maps/create' \
+  //  --header 'Content-Type: application/json' \
+  //  --data-raw '{
+  //  "name": "test map 1",
+  //  "mapLat": "51.496133",
+  //  "mapLong": "-0.073643"
+  //  }'
+
+  //-------------------------------------------------------------------------------------------------------------
   //POST: /maps /favorites - If a guest or user favorites a specific map that map gets saved to them.
 
   router.post("/favorites", (req, res) => {
