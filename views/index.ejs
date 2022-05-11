@@ -102,9 +102,12 @@
     </div>
     <div id='new-map_form'>
       Create a new map!
-      <form>
-        <input type="text" name="map-name" placeholder="Name your map!">
+      <form action="/maps/create" method="POST">
+        <input id="latitudeInput" type="hidden" name="mapLat">
+        <input id="longitudeInput" type="hidden" name="mapLong">
+        <input type="text" name="name" placeholder="Name your map!">
         <input class="btn btn-light" type="submit">
+
       </form>
     </div>
     <footer class='create-icons'>

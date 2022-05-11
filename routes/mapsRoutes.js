@@ -44,19 +44,16 @@ module.exports = (db) => {
   // it will create a new map_id for the database. it will grab the current lat and long of the leaflet map and assign it to the
   // new map_id db entry as its map specific lat and long
 
-  //QUESTION: how will we grab lat and long from leaflet for a new map?
-
   router.post("/create", (req, res) => {
-    // when the ejs form is built the value inputed by the user will be interpolated into the INSERT below
-
     const newMapName = req.body.name;
     const mapLatitude = req.body.mapLat;
     const mapLongitude = req.body.mapLong;
 
     db.query(
       `INSERT INTO maps(name, latitude, longitude)
-       VALUES ('${newMapName}', ${mapLatitude}, ${mapLongitude})
-       RETURNING *;`
+       VALUES ($1, $2 , $3)
+       RETURNING *;`,
+      [newMapName, mapLatitude, mapLongitude]
     )
 
       // .then runs when the above DB insert is successfull, then user is redirected to the map they created
@@ -69,15 +66,6 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-
-  // CURL TEST:
-  //  curl --location --request POST 'http://localhost:8080/maps/create' \
-  //  --header 'Content-Type: application/json' \
-  //  --data-raw '{
-  //  "name": "test map 1",
-  //  "mapLat": "51.496133",
-  //  "mapLong": "-0.073643"
-  //  }'
 
   //-------------------------------------------------------------------------------------------------------------
   //POST: /maps /favorites - If a guest or user favorites a specific map that map gets saved to them.
