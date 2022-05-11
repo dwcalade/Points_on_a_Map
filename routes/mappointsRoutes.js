@@ -13,17 +13,10 @@ module.exports = (db) => {
     const listId = req.params.listid;
     const { title, description, imgUrl, latitude, longitude } = req.body;
 
-    //function still needs to be declared somethwere in the project
-    addPoint(
-      db,
-      ownerId,
-      listId,
-      title,
-      description,
-      imgUrl,
-      latitude,
-      longitude
-    ).then(() => response.status(201).send());
+    //function still needs to be built
+    addPoint(title, description, imgUrl, latitude, longitude).then(() =>
+      response.status(201).send()
+    );
   });
 
   //-------------------------------------------------------------------------------
@@ -32,6 +25,7 @@ module.exports = (db) => {
     const { pointid } = req.params;
     const { title, description, imgUrl } = req.body;
 
+    //MISSING: DB Querry?
     updatePoint(db, pointid, title, description, imgUrl).then(() =>
       response.status(201).send()
     );

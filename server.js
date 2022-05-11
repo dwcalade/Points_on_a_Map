@@ -1,4 +1,3 @@
-
 //the backend server
 
 // load .env data into process.env
@@ -23,6 +22,7 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+app.use(express.json()); //this allows us to do req.body
 app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
@@ -46,7 +46,7 @@ app.use(
     source: __dirname + "/styles",
     destination: __dirname + "/public/styles",
     isSass: false, // false => scss, true => sass
-    debug: false
+    debug: false,
   })
 );
 
@@ -62,7 +62,6 @@ app.use(cookieSession({
 const usersRoutes = require("./routes/usersRoutes");
 const mapsRoutes = require("./routes/mapsRoutes");
 const mapspointsRoutes = require("./routes/mappointsRoutes");
-
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
