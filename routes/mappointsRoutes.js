@@ -13,6 +13,7 @@ module.exports = (db) => {
     const listId = req.params.listid;
     const { title, description, imgUrl, latitude, longitude } = req.body;
 
+    //function still needs to be declared somethwere in the project
     addPoint(
       db,
       ownerId,
@@ -27,7 +28,7 @@ module.exports = (db) => {
 
   //-------------------------------------------------------------------------------
   //POST: Update title/description/image of a map point
-  router.post("/:mapid/update/:pinid", (req, response) => {
+  router.post("/:map_id/update/:pin_id", (req, response) => {
     const { pointid } = req.params;
     const { title, description, imgUrl } = req.body;
 
@@ -38,7 +39,7 @@ module.exports = (db) => {
 
   //-------------------------------------------------------------------------------
   //Delete a point from a list
-  router.post("/:mapid/remove/:pinid", (req, response) => {
+  router.post("/:map_id/remove/:pin_id", (req, response) => {
     deletePoint(db, req.params.pinid).then(() => response.status(201).send());
     res.redirect("/maps");
   });
