@@ -1,4 +1,4 @@
-Points On A Map
+Points On A Mappp
 =========
 
 Points on a Map is a web app that uses Leaflet; this allows users to create and edit maps of their interests/places to refer!
