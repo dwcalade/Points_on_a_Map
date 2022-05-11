@@ -29,47 +29,16 @@ $(() => {
     $("html, body").animate({ scrollTop: "9999" }, 1000);
   })
 
-
-
-
-  const popupContent = `
-    <form class="marker-form">
-      <label for="marker-name">Name</label>
-      <input type="text", placeholder="name your marker!"/>
-      <label for="marker-img">Image</label>
-      <input class="marker-img" type="url", placeholder="img url"/>
-      <label for="marker-description">Description</label>
-      <textarea class="marker-description" placeholder="desciption"></textarea>
-      <input class="submit" type="submit">
-      <button class="cancel-button">Cancel</button>
-    </form>
-  `;
-
-  newMarkerGroup = new L.LayerGroup();
-	map.on('click', addMarker);
-
-  function addMarker(click){
-    return newMarker = new L.marker(click.latlng, {draggable: 'true'})
-      .addTo(map)
-      .bindPopup(popupContent)
-      .openPopup();
-  }
-
   $login = $('#login');
   $logout = $('#logout');
   $register = $('#register');
   $welcome = $('#welcome-message');
-  $registerForm = $('.register_form');
+
   $loginForm = $('.login_form');
 
   $login.click(() => {
     $loginForm.toggle();
     $registerForm.hide();
-  });
-
-  $register.click(() => {
-    $loginForm.hide();
-    $registerForm.toggle();
   });
 
   $logout.click(() => {
@@ -142,7 +111,7 @@ $(() => {
 $(() => {
 
 // add leaflet here
-const map = L.map('map').setView([51.505, -0.09], 13);
+const map = L.map('map').setView([49.27,-123.11], 13);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -153,7 +122,20 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
  accessToken: 'pk.eyJ1Ijoibmljb2xhc3JlaW1lciIsImEiOiJjbDJ5NTZrdWUxMjR5M2xtdjBlOXd5cTlhIn0.aD_v3fkw1sd4Ps5jd1Bccg'
 }).addTo(map);
 
-var marker = L.marker([51.5, -0.09]).addTo(map);
+const popupContent = `
+<form class="marker-form">
+  <label for="marker-name">Name</label>
+  <input type="text", placeholder="name your marker!"/>
+  <label for="marker-img">Image</label>
+  <input class="marker-img" type="url", placeholder="img url"/>
+  <label for="marker-description">Description</label>
+  <textarea class="marker-description" placeholder="desciption"></textarea>
+  <input class="submit" type="submit">
+  <button class="cancel-button">Cancel</button>
+</form>
+`;
+
+var marker = L.marker([51.5, -0.1]).addTo(map);
 
 // establish the database as per the erd before attempting to pull anything from it
 

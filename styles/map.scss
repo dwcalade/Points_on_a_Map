@@ -16,4 +16,7 @@ $color5: rgb(134, 184, 72);
   }
 }
 
-#map { height: 50vh; }
+#map {
+  height: 50vh;
+  z-index: 11;
+ }
