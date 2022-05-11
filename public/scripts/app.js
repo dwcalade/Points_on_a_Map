@@ -29,47 +29,16 @@ $(() => {
     $("html, body").animate({ scrollTop: "9999" }, 1000);
   })
 
-
-
-
-  const popupContent = `
-    <form class="marker-form">
-      <label for="marker-name">Name</label>
-      <input type="text", placeholder="name your marker!"/>
-      <label for="marker-img">Image</label>
-      <input class="marker-img" type="url", placeholder="img url"/>
-      <label for="marker-description">Description</label>
-      <textarea class="marker-description" placeholder="desciption"></textarea>
-      <input class="submit" type="submit">
-      <button class="cancel-button">Cancel</button>
-    </form>
-  `;
-
-  newMarkerGroup = new L.LayerGroup();
-	map.on('click', addMarker);
-
-  function addMarker(click){
-    return newMarker = new L.marker(click.latlng, {draggable: 'true'})
-      .addTo(map)
-      .bindPopup(popupContent)
-      .openPopup();
-  }
-
   $login = $('#login');
   $logout = $('#logout');
   $register = $('#register');
   $welcome = $('#welcome-message');
-  $registerForm = $('.register_form');
+
   $loginForm = $('.login_form');
 
   $login.click(() => {
     $loginForm.toggle();
     $registerForm.hide();
-  });
-
-  $register.click(() => {
-    $loginForm.hide();
-    $registerForm.toggle();
   });
 
   $logout.click(() => {
@@ -152,6 +121,19 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
  zoomOffset: -1,
  accessToken: 'pk.eyJ1Ijoibmljb2xhc3JlaW1lciIsImEiOiJjbDJ5NTZrdWUxMjR5M2xtdjBlOXd5cTlhIn0.aD_v3fkw1sd4Ps5jd1Bccg'
 }).addTo(map);
+
+const popupContent = `
+<form class="marker-form">
+  <label for="marker-name">Name</label>
+  <input type="text", placeholder="name your marker!"/>
+  <label for="marker-img">Image</label>
+  <input class="marker-img" type="url", placeholder="img url"/>
+  <label for="marker-description">Description</label>
+  <textarea class="marker-description" placeholder="desciption"></textarea>
+  <input class="submit" type="submit">
+  <button class="cancel-button">Cancel</button>
+</form>
+`;
 
 var marker = L.marker([51.5, -0.09]).addTo(map);
 
