@@ -9,41 +9,28 @@
 // SERVER SETUP:
 const express = require("express");
 const router = express.Router();
-const cookieSession = require('cookie-session');
-app.use(cookieSession({name: 'session', keys: [] }));
+const cookieSession = require("cookie-session");
+app.use(cookieSession({ name: "session", keys: [] }));
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
-  // USER RELATED SERVER ROUTES: (see google doc)
-  //-----------------------------
+  // USER SERVER ROUTES: (see google doc)
+  //-------------------------------------------------------------------------------
 
-  // Use POSTMAN or curl for front end input
-
-  router.post("/test1", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then((data) => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
-  //Login Route
+  //POST: Login Route
   router.post("/login", (req, res) => {
-      req.session.userID = user.userID;
-      res.redirect('/maps');
+    req.session.userID = user.userID;
+    res.redirect("/maps");
   });
 
+  //-------------------------------------------------------------------------------
   //Logout Route
-  router.post('/logout', (req, res) => {
-  req.session = null
-  res.clearCookie('session');
-  res.redirect('/maps');
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.clearCookie("session");
+    res.redirect("/maps");
   });
 
+  //-------------------------------------------------------------------------------
   //the return of router connects this file with server.js
   return router;
 };
-
-//-------------------------------------------------------------------------------
