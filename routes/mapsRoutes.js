@@ -48,8 +48,8 @@ module.exports = (db) => {
       `INSERT INTO maps(name, latitude, longitude)
        VALUES ('mapsRoute.js TEST', 49.69695, -483.155365);`
     )
-      // -the .then runs when the above DB insert is successfull and redirects the client to the specific
-      //  map they were just on
+
+      // .then runs when the above DB insert is successfull, then user is redirected to the map they were on
       .then((data) => {
         return res.redirect("map/1");
       })
@@ -62,19 +62,38 @@ module.exports = (db) => {
   //-------------------------------------------------------------------------------
   //POST: /maps /favorites - If a guest or user favorites a specific map that map gets saved to them.
 
-  router.post("/create", (req, res) => {
-    //conditional asks whether the client is a user or a guest
-    //if()
+  router.post("/favorites", (req, res) => {
+    // -conditional asks whether the client is a user or a guest based of whether they match an entry in the db
+    //  or they have a guest cookie
+    // !MISSING!
 
-    // when the ejs form is built the value inputed by the user will be interpolated into the INSERT below
+    //IF GUEST: assign the map to a favorites array/object to the guests cookie
+    // !MISSING!
+
+    //IF USER: the value inputed by the user will be interpolated into the INSERT below
     db.query(
       `INSERT INTO favorite_maps(user_id, map_id)
        VALUES (1, 5);`
     )
-      // -the .then runs when the above DB insert is successfull and redirects the client to the specific
-      //  map they were just on
+      // .then runs when DB insert OR guests cookie update is successfull, user gets redirected to the map they were on
       .then((data) => {
         return res.redirect("map/1");
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  //-------------------------------------------------------------------------------
+  //POST DELETE: /maps /:map_id /delete - Delete a specific map
+
+  router.post("/:map_id/delete", (req, res) => {
+    //due to the cascade delete structure of db table structure this will also delete all points related to a given map
+    db.query(`DELETE FROM maps WHERE ID = 1`)
+      // .then runs when DB insert OR guests cookie update is successfull, user gets redirected to home page
+      .then((data) => {
+        return res.redirect("/");
       })
       .catch((err) => {
         console.log("error: ", err);

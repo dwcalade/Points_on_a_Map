@@ -9,8 +9,8 @@
 // SERVER SETUP:
 const express = require("express");
 const router = express.Router();
-const cookieSession = require("cookie-session");
-app.use(cookieSession({ name: "session", keys: [] }));
+//const cookieSession = require("cookie-session");
+//app.use(cookieSession({ name: "session", keys: [] }));
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
   // USER SERVER ROUTES: (see google doc)
