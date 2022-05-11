@@ -3,7 +3,7 @@ Points On A Map
 
 Points on a Map is a web app that uses Leaflet; this allows users to create and edit maps of their interests/places to refer!
 
-It was built by Dominik Wrona and Nicholas Reimer.
+It was built by Dominik Wrona, Danny Jiang and Nicholas Reimer.
 
 ## User Stories
 
