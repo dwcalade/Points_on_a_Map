@@ -7,8 +7,8 @@ const path = require("path");
 
 // Web server config
 const PORT = process.env.PORT || 8080;
-// const sassMiddleware = require("./lib/sass-middleware");
-const sassMiddleware = require("node-sass-middleware");
+const sassMiddleware = require("./lib/sass-middleware");
+// const sassMiddleware = require("node-sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -27,27 +27,27 @@ app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  sassMiddleware({
-    /* Options */
-    src: __dirname,
-    dest: path.join(__dirname, "public"),
-    debug: false,
-    outputStyle: "compressed",
-    prefix: "/styles", // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-  })
-);
-
-//Old Dependency with new one above
 // app.use(
-//   "/styles",
 //   sassMiddleware({
-//     source: __dirname + "/styles",
-//     destination: __dirname + "/public/styles",
-//     isSass: false, // false => scss, true => sass
-//     debug: false
+//     /* Options */
+//     src: __dirname,
+//     dest: path.join(__dirname, "public"),
+//     debug: false,
+//     outputStyle: "compressed",
+//     prefix: "/styles", // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
 //   })
 // );
+// console.log ("hello");
+// Old Dependency with new one above
+app.use(
+  "/styles",
+  sassMiddleware({
+    source: __dirname + "/styles",
+    destination: __dirname + "/public/styles",
+    isSass: false, // false => scss, true => sass
+    debug: false
+  })
+);
 
 app.use(express.static("public"));
 
