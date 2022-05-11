@@ -39,17 +39,26 @@ module.exports = (db) => {
 
   //-------------------------------------------------------------------------------
   //POST: /maps /create
-  // -user clicks the create a new map and a form will pop up asking for a map name and when the user submits the form
-  // it will create a new map_id for the database
+  // -user clicks the create a new map button and a form will pop up asking for a map name and when the user submits the form
+  // it will create a new map_id for the database. it will grab the current lat and long of the leaflet map and assign it to the
+  // new map_id db entry as its map specific lat and long
+
+  //QUESTION: how will we grab lat and long from leaflet for a new map?
 
   router.post("/create", (req, res) => {
     // when the ejs form is built the value inputed by the user will be interpolated into the INSERT below
+
+    //QUESTION: what is difference between params and body?
+    const newMapName = req.params.name;
+    const mapLatitude = req.body.mapLat;
+    const mapLongitude = req.body.mapLong;
+
     db.query(
       `INSERT INTO maps(name, latitude, longitude)
-       VALUES ('mapsRoute.js TEST', 49.69695, -483.155365);`
+       VALUES ('${newMapName}', ${mapLatitude}, ${mapLongitude});`
     )
 
-      // .then runs when the above DB insert is successfull, then user is redirected to the map they were on
+      // .then runs when the above DB insert is successfull, then user is redirected to the map they created
       .then((data) => {
         return res.redirect("map/1");
       })
