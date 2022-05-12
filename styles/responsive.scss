@@ -20,14 +20,20 @@ $shadow: 0.2em 0.2em 0 0 $color4;
       justify-content: center;
       align-items: center;
       position: fixed;
-      z-index: 11;
+      z-index: 1;
       bottom: 5%;
       left: 5%;
     }
     .flexbox-responsive {
       overflow-y: scroll;
       display: flex;
-      flex-direction: column;
+      height: 100vh;
+      // flex-direction: column;
+
+      // #map {
+      //   height: 100vh;
+      //   z-index: 1;
+      //  }
       main {
         order: 2;
         position: static;
