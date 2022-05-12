@@ -31,6 +31,8 @@ module.exports = (db) => {
 
       .then((data) => {
         const map = data.rows;
+        //change this to res.render for map_id(ejs)
+        //create a templateVar
         res.json({ map });
       })
       .catch((err) => {
