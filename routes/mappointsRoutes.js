@@ -11,15 +11,16 @@ module.exports = (db) => {
 
   //POST: Add a new map point to a list given its id
 
-  router.post("/:mapid/add", (req, res) => {
+  router.post("/:map_id/add", (req, res) => {
     let pointsInfo = {
       name: req.body.name,
       description: req.body.description,
       image: req.body.image,
-      latitude: Number(req.body.latitude),
-      longitude: Number(req.body.longitude),
+      latitude: Number(req.body.mapLat),
+      longitude: Number(req.body.mapLong),
       map_id: Number(req.body.map_id),
     };
+    console.log("point info bitches: ", pointsInfo);
     pointsHelper.addPoints(db, pointsInfo).then((dbRes) => res.json(dbRes));
   });
 

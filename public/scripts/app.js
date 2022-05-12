@@ -132,13 +132,17 @@ $(() => {
   ).addTo(map);
 
   const popupContent = `
-<form class="marker-form">
+<form class="marker-form" action="/maps/:map_id/add" method="POST">
   <label for="marker-name">Name</label>
-  <input type="text", placeholder="name your marker!"/>
+  <input type="text" name="name" placeholder="name your marker!"/>
   <label for="marker-img">Image</label>
-  <input class="marker-img" type="url", placeholder="img url"/>
+  <input class="marker-img" type="url" name="image" placeholder="img url"/>
   <label for="marker-description">Description</label>
-  <textarea class="marker-description" placeholder="desciption"></textarea>
+  <textarea class="marker-description" name="description" placeholder="desciption"></textarea>
+
+  <input id="click.latlng.lat" type="hidden" name="mapLat">
+  <input id="click.latlng.lng" type="hidden" name="mapLong">
+
   <input class="submit" type="submit">
   <button class="cancel-button">Cancel</button>
 </form>
