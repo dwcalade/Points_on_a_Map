@@ -3,6 +3,7 @@ $color2: rgb(248, 246, 207);
 $color3: rgb(42, 169, 152);
 $color4: rgb(46, 23, 101);
 $color5: rgb(134, 184, 72);
+$color6: rgb(134, 184, 72);
 
 .marker-form, .edit-popup {
   label, h2, p {
@@ -38,12 +39,12 @@ $color5: rgb(134, 184, 72);
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background-color: $color1;
+  background-color: $color2;
   box-shadow: $shadow;
 }
 
 .leaflet-popup-content-wrapper .leaflet-popup-content {
-  background-color: $color1;
+  background-color: $color2;
 }
 
 .btn {
@@ -77,6 +78,6 @@ $color5: rgb(134, 184, 72);
 
 
 #map {
-  height: 50vh;
+  height: 100vh;
   z-index: 1;
  }
