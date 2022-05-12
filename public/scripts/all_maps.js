@@ -1,3 +1,6 @@
+//CODE FOR POPULATING MAPS IN THE MAP LIST BOX
+//written by Nicolas
+
 $(() => {
   getAllMaps();
 });
