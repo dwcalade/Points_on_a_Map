@@ -20,7 +20,7 @@ module.exports = (db) => {
       longitude: Number(req.body.mapLong),
       map_id: Number(req.body.map_id),
     };
-    console.log("point info bitches: ", pointsInfo);
+    console.log("point ", pointsInfo);
     pointsHelper.addPoints(db, pointsInfo).then((dbRes) => res.json(dbRes));
   });
 

@@ -132,7 +132,7 @@ $(() => {
   ).addTo(map);
 
   const popupContent = `
-<form class="marker-form" action="/maps/:map_id/add" method="POST">
+<form class="marker-form" action="/mappoints/1/add" method="POST">
   <label for="marker-name">Name</label>
   <input type="text" name="name" placeholder="name your marker!"/>
   <label for="marker-img">Image</label>
