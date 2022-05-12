@@ -25,7 +25,7 @@ module.exports = (db) => {
   //-------------------------------------------------------------------------------
   //GET: /maps /:map_id - guest or user clicks a map in the map list box and is redirected to that map
 
-  router.get("/:map_id", (req, res) => {
+  router.get("/:map_id", (req, res) => { //////////// how do we get points by map id
     const mapID = req.params.map_id;
     db.query(`SELECT * FROM maps WHERE id = ${mapID};`)
 
