@@ -2,7 +2,9 @@
 // -retrieve from the database all the points related to a given map
 // -render all of those points to the screen as individual new leaflet markers (see leaflet notes)
 
-function renderMapPoints(map_id) {}
+function renderMapPoints(db, map_id) {
+  let queryString = 'SELECT'
+}
 
 const addPoints = function(db, pointInfo) {
   let pointValues = [
@@ -30,7 +32,7 @@ const editPoint = function(db, dataPoint) {
   ];
   console.log(pointValues);
   let queryString = `UPDATE points
-                      SET  name = $2,
+                      SET  name = $1,
                       image = $2,
                       description = $3
                       WHERE id= $4;`;
