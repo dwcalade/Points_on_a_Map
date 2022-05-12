@@ -6,6 +6,12 @@ $color5: rgb(134, 184, 72);
 $shadow: 0.2em 0.2em 0 0 $color1;
 
 body {
+  .adjust {
+    display: flex;
+  }
+  .login-register-buttons {
+    margin-left: auto
+  }
   nav {
     background-color: $color1;
     h1 {
