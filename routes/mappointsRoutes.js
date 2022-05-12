@@ -2,7 +2,7 @@
 // SERVER SETUP:
 const express = require("express");
 const router = express.Router();
-const pointsHelper = require("../views/Helper Functions/renderMapPoints");
+const pointsHelper = require("../helper/helperFunctions");
 
 module.exports = (db) => {
   //-------------------------------------------------------------------------------
