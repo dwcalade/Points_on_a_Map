@@ -131,29 +131,29 @@ $(() => {
     }
   ).addTo(map);
 
-  const popupContent = `
-<form class="marker-form" action="/mappoints/1/add" method="POST">
-  <label for="marker-name">Name</label>
-  <input type="text" name="name" placeholder="name your marker!"/>
-  <label for="marker-img">Image</label>
-  <input class="marker-img" type="url" name="image" placeholder="img url"/>
-  <label for="marker-description">Description</label>
-  <textarea class="marker-description" name="description" placeholder="desciption"></textarea>
-
-  <input id="click.latlng.lat" type="hidden" name="mapLat">
-  <input id="click.latlng.lng" type="hidden" name="mapLong">
-
-  <input class="submit" type="submit">
-  <button class="cancel-button">Cancel</button>
-</form>
-`;
-
   var marker = L.marker([51.5, -0.1]).addTo(map);
 
   newMarkerGroup = new L.LayerGroup();
   map.on("click", addMarker);
 
   function addMarker(click) {
+    const popupContent = `
+    <form class="marker-form" action="/mappoints/1/add" method="POST">
+      <label for="marker-name">Name</label>
+      <input type="text" name="name" placeholder="name your marker!"/>
+      <label for="marker-img">Image</label>
+      <input class="marker-img" type="url" name="image" placeholder="img url"/>
+      <label for="marker-description">Description</label>
+      <textarea class="marker-description" name="description" placeholder="desciption"></textarea>
+
+      <input value="${click.latlng.lat}" type="hidden" name="mapLat">
+      <input value="${click.latlng.lng}" type="hidden" name="mapLong">
+
+      <input class="submit" type="submit">
+      <button class="cancel-button">Cancel</button>
+    </form>
+    `;
+
     return (newMarker = new L.marker(click.latlng, { draggable: "true" })
       .addTo(map)
       .bindPopup(popupContent)
