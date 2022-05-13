@@ -106,4 +106,56 @@
   //---------------------------------------------------------------------------------------------------------------------------------
   L.marker([49.68318, -483.137169]).addTo(map2);
   L.marker([49.673183, -483.186264]).addTo(map2);
+
+  newMarkerGroup = new L.LayerGroup();
+  map.on("click", addMarker);
+
+  function addMarker(click) {
+    const popupContent = `
+    <form class="marker-form" action="/mappoints/1/add" method="POST">
+      <label for="marker-name">Name</label>
+      <input type="text" name="name" placeholder="name your marker!"/>
+      <label for="marker-img">Image</label>
+      <input class="marker-img" type="url" name="image" placeholder="img url"/>
+      <label for="marker-description">Description</label>
+      <textarea class="marker-description" name="description" placeholder="desciption"></textarea>
+
+      <input value="${click.latlng.lat}" type="hidden" name="mapLat">
+      <input value="${click.latlng.lng}" type="hidden" name="mapLong">
+
+      <input class="submit" type="submit">
+      <button class="cancel-button">Cancel</button>
+    </form>
+    `;
+
+    return (newMarker = new L.marker(click.latlng, { draggable: "true" })
+      .addTo(map2)
+      .bindPopup(popupContent)
+      .openPopup());
+  }
+
+  //this event handler records the current lat and long of the screen when a user is finished moving it
+  map.on("moveend", (e) => {
+    $latitudeInput.val(map.getCenter().lat);
+    $longitudeInput.val(map.getCenter().lng);
+  });
+});
+
+
+
+
+
+
+  /* displays points on current map
+for (const point of data) {
+
+const lng = point.longitude;
+const lat = point.latitude;
+const markers = [];
+
+// add points to map
+L.marker([lng, lat]).addTo(map);
+markers.push([lng, lat])
+}*/
+
 </script>
