@@ -21,6 +21,15 @@ $(() => {
   const $navigateDown = $(".navigate-down");
   const $navigateUp = $(".navigate-up");
 
+  $login = $("#login");
+  $logout = $("#logout");
+  $register = $("#register");
+  $welcome = $("#welcome-message");
+  $loginmessage = $("#loginmessage");
+
+  $logout.hide()
+  $loginmessage.hide()
+
   $navigateUp.click(() => {
     $("html, body").animate({ scrollTop: "0" }, 1000);
   });
@@ -29,24 +38,25 @@ $(() => {
     $("html, body").animate({ scrollTop: "9999" }, 1000);
   });
 
-  $login = $("#login");
-  $logout = $("#logout");
-  $register = $("#register");
-  $welcome = $("#welcome-message");
+
 
   $loginForm = $(".login_form");
 
   $login.click(() => {
-    $loginForm.toggle();
-    $registerForm.hide();
+    $login.hide()
+    $loginmessage.show()
+    $logout.show()
   });
+
+
 
   $logout.click(() => {
     $login.show();
-    $register.show();
     $logout.hide();
     $welcome.hide();
+    $loginmessage.hide()
   });
+
   $mapButton.click(() => {
     $mapForm.toggle();
   });
