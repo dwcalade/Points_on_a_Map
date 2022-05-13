@@ -25,15 +25,18 @@ module.exports = (db) => {
   //-------------------------------------------------------------------------------
   //GET: /maps /:map_id - guest or user clicks a map in the map list box and is redirected to that map
 
-  router.get("/:map_id", (req, res) => { //////////// how do we get points by map id
+  router.get("/:map_id", (req, res) => {
+    //////////// how do we get points by map id
     const mapID = req.params.map_id;
     db.query(`SELECT * FROM maps WHERE id = ${mapID};`)
 
       .then((data) => {
-        const map = data.rows;
+        const mapData = data.rows;
         //change this to res.render for map_id(ejs)
         //create a templateVar
-        res.json({ map });
+        //res.json({ map });
+
+        res.render("maps", { nick: mapData });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
